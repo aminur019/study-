@@ -1,1 +1,1225 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#ff7675">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="জাদুকরী খাতা">
+  <title>ছোটমণিদের জাদুকরী লেখার খাতা 🎨✨</title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;700;800&family=Hind+Siliguri:wght@400;500;700&family=Comic+Neue:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Anek Bangla', 'Hind Siliguri', system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: background-image 0.5s ease, background-color 0.5s ease;
+    }
+    .font-kids-en { font-family: 'Comic Neue', 'Arial Rounded MT Bold', 'Arial', sans-serif; font-weight: 700; }
+    .font-kids-bn { font-family: 'Anek Bangla', 'Hind Siliguri', system-ui, sans-serif; font-weight: 700; }
+    .font-kids-ar { font-family: 'Noto Naskh Arabic', 'Times New Roman', serif; font-weight: 700; }
+
+    @keyframes playful-bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-4px) scale(1.03); }
+    }
+    .bounce-hover:hover { animation: playful-bounce 0.6s infinite ease-in-out; }
+
+    .kids-slider-vertical {
+      -webkit-appearance: none; appearance: none;
+      background: linear-gradient(to top, #ff7675, #fab1a0, #ffeaa7, #55efc4, #74b9ff, #a29bfe);
+      border-radius: 9999px; width: 12px; outline: none;
+      writing-mode: vertical-lr; direction: rtl;
+    }
+    .kids-slider-vertical::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #ffffff; border: 4px solid #ff7675;
+      cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* ============ ১০টি থিম ============ */
+    body.theme-cloud {
+      background-color: #e0f2fe;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='25' fill='white' opacity='0.6'/%3E%3Ccircle cx='35' cy='25' r='10' fill='white' opacity='0.8'/%3E%3Ccircle cx='20' cy='35' r='15' fill='white' opacity='0.5'/%3E%3C/svg%3E");
+      background-size: 120px 120px;
+    }
+    body.theme-jungle {
+      background-color: #d4f5d4;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='40,5 55,40 25,40' fill='%236b8c42' opacity='0.3'/%3E%3Crect x='35' y='40' width='10' height='20' fill='%238B4513' opacity='0.3'/%3E%3C/svg%3E");
+      background-size: 100px 100px;
+    }
+    body.theme-ocean {
+      background-color: #b3e0ff;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,20 Q25,5 50,20 T100,20' fill='none' stroke='white' stroke-width='3' opacity='0.5'/%3E%3C/svg%3E");
+      background-size: 150px 60px;
+    }
+    body.theme-castle {
+      background-color: #f7e3ff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='15' y='30' width='30' height='50' fill='%23e0a3ff' opacity='0.3'/%3E%3Crect x='5' y='20' width='15' height='25' fill='%23e0a3ff' opacity='0.3'/%3E%3Crect x='40' y='20' width='15' height='25' fill='%23e0a3ff' opacity='0.3'/%3E%3C/svg%3E");
+      background-size: 100px 120px;
+    }
+    body.theme-sunset {
+      background-color: #ffe0cc;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='30' fill='%23ffa502' opacity='0.4'/%3E%3Ccircle cx='20' cy='20' r='10' fill='%23ff6348' opacity='0.3'/%3E%3Ccircle cx='60' cy='60' r='15' fill='%23ff7f50' opacity='0.3'/%3E%3C/svg%3E");
+      background-size: 100px 100px;
+    }
+    body.theme-space {
+      background-color: #1a1a2e;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='white' opacity='0.8'/%3E%3Ccircle cx='50' cy='30' r='2' fill='white' opacity='0.6'/%3E%3Ccircle cx='80' cy='70' r='1' fill='white' opacity='0.9'/%3E%3Ccircle cx='30' cy='80' r='1.5' fill='white' opacity='0.7'/%3E%3Ccircle cx='70' cy='20' r='2.5' fill='white' opacity='0.5'/%3E%3Ccircle cx='90' cy='50' r='1' fill='white' opacity='0.8'/%3E%3Ccircle cx='25' cy='55' r='2' fill='%23feca57' opacity='0.6'/%3E%3C/svg%3E");
+      background-size: 120px 120px;
+    }
+    body.theme-candy {
+      background-color: #ffeef8;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='5' y='5' width='20' height='20' rx='5' fill='%23ff6b81' opacity='0.3'/%3E%3Crect x='35' y='35' width='20' height='20' rx='5' fill='%23a29bfe' opacity='0.3'/%3E%3Ccircle cx='45' cy='15' r='8' fill='%23feca57' opacity='0.3'/%3E%3Ccircle cx='15' cy='45' r='8' fill='%2355efc4' opacity='0.3'/%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+    body.theme-desert {
+      background-color: #f5e6d3;
+      background-image: url("data:image/svg+xml,%3Csvg width='120' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 Q30,10 60,30 T120,30' fill='none' stroke='%23e6b800' stroke-width='3' opacity='0.3'/%3E%3Cpath d='M0,45 Q40,25 80,45 T120,45' fill='none' stroke='%23cc9a00' stroke-width='2' opacity='0.2'/%3E%3C/svg%3E");
+      background-size: 150px 80px;
+    }
+    body.theme-rain {
+      background-color: #d4e6f1;
+      background-image: url("data:image/svg+xml,%3Csvg width='50' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='10' y1='5' x2='8' y2='25' stroke='%2385c1e9' stroke-width='2' opacity='0.5'/%3E%3Cline x1='30' y1='10' x2='28' y2='30' stroke='%2385c1e9' stroke-width='2' opacity='0.5'/%3E%3Cline x1='45' y1='0' x2='43' y2='20' stroke='%2385c1e9' stroke-width='2' opacity='0.5'/%3E%3C/svg%3E");
+      background-size: 60px 100px;
+    }
+    body.theme-snow {
+      background-color: #f0f8ff;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='20' font-size='15' opacity='0.3'%3E❄%3C/text%3E%3Ctext x='40' y='50' font-size='20' opacity='0.4'%3E❅%3C/text%3E%3Ctext x='25' y='35' font-size='12' opacity='0.25'%3E❆%3C/text%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .mascot {
+      position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-size: 2.5rem;
+      animation: bounce 1s infinite; cursor: pointer;
+      filter: drop-shadow(0 0 6px rgba(255,255,0,0.7));
+    }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    .animate-pop { animation: pop 0.3s ease-in-out; }
+
+    .install-banner {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 2000;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;
+      transform: translateY(-100%); transition: transform 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .install-banner.show { transform: translateY(0); }
+    .install-btn {
+      background: white; color: #764ba2; border: none; padding: 8px 18px;
+      border-radius: 25px; font-weight: bold; cursor: pointer; font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .dismiss-btn {
+      background: transparent; color: white; border: none; font-size: 20px;
+      cursor: pointer; padding: 4px 8px;
+    }
+    .offline-dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      margin-right: 4px; vertical-align: middle;
+    }
+    .offline-dot.online { background: #2ed573; }
+    .offline-dot.offline { background: #ff4757; }
+
+    .gallery-item {
+      transition: all 0.2s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    /* ড্রপডাউন এনিমেশন */
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #themeMenu {
+      animation: slideDown 0.2s ease;
+    }
+    #themeToggleBtn {
+      transition: all 0.3s ease;
+    }
+    #themeToggleBtn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+    }
+    .theme-option {
+      transition: all 0.15s ease;
+    }
+    .theme-option:hover {
+      transform: translateX(3px);
+    }
+  </style>
+</head>
+<body class="w-full h-full overflow-hidden theme-cloud text-slate-800 antialiased selection:bg-transparent" id="mainBody">
+
+  <!-- ইনস্টল ব্যানার -->
+  <div class="install-banner" id="installBanner">
+    <span style="display:flex;align-items:center;gap:8px;">
+      <i class="fa-solid fa-download text-xl"></i>
+      <span style="font-weight:bold;font-size:14px;">📱 অ্যাপটি ইনস্টল করো!</span>
+    </span>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="install-btn" id="installBtn">ইনস্টল ✨</button>
+      <button class="dismiss-btn" id="dismissBtn">✕</button>
+    </div>
+  </div>
+
+  <!-- মাসকট -->
+  <div class="mascot" id="mascot" title="আমি তোমার বন্ধু!">🧚‍♀️</div>
+
+  <!-- গ্যালারি মডাল -->
+  <div class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] hidden items-center justify-center p-3" id="galleryOverlay">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-4 shadow-2xl border-4 border-pink-300 max-h-[90vh] flex flex-col">
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-xl font-black text-pink-600">🖼️ আমার আর্ট গ্যালারি</span>
+        <button class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 font-bold flex items-center justify-center" id="galleryClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="overflow-y-auto no-scrollbar flex flex-wrap gap-2 justify-center p-2" id="galleryImages"></div>
+      <div class="flex gap-2 mt-3">
+        <button class="flex-1 py-2 bg-pink-500 text-white rounded-xl font-bold" id="clearGalleryBtn">🗑️ সব মুছো</button>
+        <button class="flex-1 py-2 bg-blue-500 text-white rounded-xl font-bold" id="downloadAllBtn">📥 সব ডাউনলোড</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col w-screen h-screen h-[100dvh] relative">
+    <!-- টপ বার -->
+    <header class="flex-shrink-0 flex items-center justify-between px-3 py-2 bg-white/80 backdrop-blur-md border-b-4 border-yellow-300 shadow-sm z-30 gap-2 flex-wrap">
+      <button class="bounce-hover flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold text-xs md:text-sm shadow-md border-b-4 border-indigo-800 active:transform active:translate-y-1 transition-all" id="btnSubject">
+        <i class="fa-solid fa-layer-group text-base text-yellow-300"></i>
+        <span>পড়া ও সিলেবাস 📚</span>
+      </button>
+      <div class="bg-amber-100 border-2 border-amber-400 px-2 py-1 rounded-full shadow-inner flex items-center gap-1 truncate max-w-[35%]">
+        <span class="offline-dot online" id="onlineDot"></span>
+        <span class="text-xs md:text-sm font-black text-amber-800 font-kids-bn truncate" id="subjectBadge">বাংলা স্বরবর্ণ 🍎</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <button class="w-10 h-10 rounded-full bg-gradient-to-b from-sky-400 to-blue-500 text-white shadow-md border-b-4 border-blue-700 flex items-center justify-center active:scale-90 transition-transform" id="speakBtn" title="আবার শোনো 🔊">
+          <i class="fa-solid fa-volume-high text-lg"></i>
+        </button>
+
+        <!-- থিম ড্রপডাউন -->
+        <div class="relative" id="themeDropdown">
+          <button id="themeToggleBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-400 to-purple-400 text-white font-bold text-xs shadow-md border-b-3 border-indigo-600 hover:from-indigo-500 hover:to-purple-500 transition-all active:scale-95 whitespace-nowrap">
+            <span id="themeIcon">☁️</span>
+            <span id="themeLabel">মেঘ</span>
+            <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i>
+          </button>
+          <div id="themeMenu" class="hidden absolute top-full mt-2 right-0 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border-2 border-purple-200 p-2 z-50 min-w-[220px] max-h-[320px] overflow-y-auto no-scrollbar">
+            <div class="text-[10px] font-black text-purple-400 uppercase tracking-wider px-2 py-1 mb-1">🎨 থিম বেছে নাও</div>
+            <div class="grid grid-cols-1 gap-1">
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-purple-400 bg-purple-50" data-theme="theme-cloud" data-icon="☁️" data-label="মেঘ">
+                <span class="text-lg">☁️</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">মেঘের রাজ্য</span>
+                  <span class="text-[9px] text-slate-400">নরম সাদা মেঘ</span>
+                </div>
+                <span class="ml-auto text-purple-500 check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-jungle" data-icon="🌳" data-label="জঙ্গল">
+                <span class="text-lg">🌳</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">সবুজ জঙ্গল</span>
+                  <span class="text-[9px] text-slate-400">গাছপালা ভরা</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-ocean" data-icon="🌊" data-label="সমুদ্র">
+                <span class="text-lg">🌊</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">নীল সমুদ্র</span>
+                  <span class="text-[9px] text-slate-400">ঢেউয়ের ছন্দ</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-castle" data-icon="🏰" data-label="রাজপ্রাসাদ">
+                <span class="text-lg">🏰</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">রাজপ্রাসাদ</span>
+                  <span class="text-[9px] text-slate-400">রূপকথার দুনিয়া</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-sunset" data-icon="🌅" data-label="সূর্যাস্ত">
+                <span class="text-lg">🌅</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">সূর্যাস্ত</span>
+                  <span class="text-[9px] text-slate-400">কমলা আকাশ</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-space" data-icon="🚀" data-label="মহাকাশ">
+                <span class="text-lg">🚀</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">মহাকাশ</span>
+                  <span class="text-[9px] text-slate-400">তারাভরা রাত</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-candy" data-icon="🍬" data-label="ক্যান্ডি">
+                <span class="text-lg">🍬</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">ক্যান্ডি ল্যান্ড</span>
+                  <span class="text-[9px] text-slate-400">মিষ্টি রঙিন</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-desert" data-icon="🏜️" data-label="মরুভূমি">
+                <span class="text-lg">🏜️</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">মরুভূমি</span>
+                  <span class="text-[9px] text-slate-400">সোনালি বালু</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-rain" data-icon="🌧️" data-label="বৃষ্টি">
+                <span class="text-lg">🌧️</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">বৃষ্টির দিন</span>
+                  <span class="text-[9px] text-slate-400">নরম বর্ষা</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+              <button class="theme-option flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-xs transition-all hover:bg-purple-50 active:scale-95 border-2 border-transparent hover:border-purple-200" data-theme="theme-snow" data-icon="❄️" data-label="তুষার">
+                <span class="text-lg">❄️</span>
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-slate-700">তুষারপাত</span>
+                  <span class="text-[9px] text-slate-400">বরফের রাজ্য</span>
+                </div>
+                <span class="ml-auto text-purple-500 hidden check-mark"><i class="fa-solid fa-circle-check"></i></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center cursor-pointer min-w-[45px]">
+          <div class="text-2xl md:text-4xl font-black text-pink-600 font-kids-bn" id="currentWordDisplay">অ</div>
+        </div>
+        <div class="flex items-center gap-1 text-yellow-500 text-lg font-black" id="starDisplay">⭐0</div>
+      </div>
+    </header>
+
+    <!-- মেইন প্লে-গ্রাউন্ড -->
+    <main class="flex-1 flex flex-row p-2 md:p-4 gap-2 md:gap-4 min-height-0 relative">
+      <div class="flex flex-col justify-start items-center gap-3 bg-white/90 backdrop-blur-md p-2 rounded-3xl shadow-xl border-4 border-purple-200 w-16 md:w-20" id="toolPanel">
+        <button class="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all shadow-md active:scale-95" id="penModeBtn" title="পেন">
+          <i class="fa-solid fa-pencil text-2xl md:text-3xl text-indigo-500"></i>
+        </button>
+        <button class="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all shadow-md active:scale-95" id="eraserModeBtn" title="রাবার">
+          <i class="fa-solid fa-eraser text-2xl md:text-3xl text-pink-500"></i>
+        </button>
+        <div class="w-10 h-0.5 bg-slate-200 rounded-full mx-1"></div>
+        <div class="flex flex-col items-center justify-center gap-1">
+          <span class="text-[9px] font-black text-purple-700 bg-purple-100 px-1.5 py-0.5 rounded-full whitespace-nowrap" id="sizeLabel">পেন</span>
+          <input type="range" min="4" max="50" value="12" class="kids-slider-vertical h-20 sm:h-28 cursor-pointer" id="sizeSlider">
+        </div>
+        <div class="w-10 h-0.5 bg-slate-200 rounded-full mx-1"></div>
+        <div class="flex flex-col items-center justify-center gap-1">
+          <span class="text-[9px] font-black text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full whitespace-nowrap">ফন্ট</span>
+          <input type="range" min="20" max="150" value="100" class="kids-slider-vertical h-20 sm:h-28 cursor-pointer" id="fontScaleSlider" title="পিছনের অক্ষরের সাইজ">
+        </div>
+      </div>
+
+      <div class="flex-1 relative overflow-hidden rounded-3xl bg-white shadow-2xl border-4 md:border-8 border-yellow-400 min-h-0" id="canvasContainer">
+        <canvas id="guideCanvas" class="absolute inset-0 w-full h-full z-1 rounded-2xl pointer-events-none"></canvas>
+        <canvas id="drawCanvas" class="absolute inset-0 w-full h-full z-2 rounded-2xl touch-none cursor-pointer"></canvas>
+        <div class="absolute inset-0 w-full h-full pointer-events-none z-1 opacity-50 flex items-center justify-center" id="guideOverlay"></div>
+      </div>
+
+      <div class="bg-white/90 backdrop-blur-md p-2 rounded-3xl shadow-xl border-4 border-emerald-200 flex flex-col justify-start md:justify-center gap-2 overflow-y-auto no-scrollbar w-14 md:w-18" id="colorPaletteCard"></div>
+    </main>
+
+    <footer class="flex-shrink-0 bg-white/95 backdrop-blur-md px-3 py-3 border-t-4 border-purple-300 shadow-xl z-20">
+      <div class="max-w-4xl mx-auto flex items-center justify-between gap-3">
+        <button class="bounce-hover flex-1 py-3 rounded-2xl bg-gradient-to-r from-amber-400 to-amber-500 text-white shadow border-b-4 border-amber-700 disabled:opacity-30 disabled:pointer-events-none text-center flex items-center justify-center" id="prevBtn"><i class="fa-solid fa-circle-arrow-left text-2xl"></i></button>
+        <button class="bounce-hover flex-1 py-3 rounded-2xl bg-slate-100 text-slate-700 border-b-4 border-slate-300 flex items-center justify-center" id="undoBtn"><i class="fa-solid fa-rotate-left text-2xl text-indigo-500"></i></button>
+        <button class="bounce-hover flex-1 py-3 rounded-2xl bg-slate-100 text-slate-700 border-b-4 border-slate-300 flex items-center justify-center" id="redoBtn"><i class="fa-solid fa-rotate-right text-2xl text-emerald-500"></i></button>
+        <button class="bounce-hover flex-1 py-3 rounded-2xl bg-gradient-to-r from-rose-400 to-rose-500 text-white shadow border-b-4 border-rose-700 flex items-center justify-center" id="btnClear"><i class="fa-solid fa-trash-can text-2xl"></i></button>
+        <button class="bounce-hover flex-1 py-3 rounded-2xl bg-gradient-to-r from-emerald-400 to-emerald-500 text-white shadow border-b-4 border-emerald-700 disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center" id="nextBtn"><i class="fa-solid fa-circle-arrow-right text-2xl"></i></button>
+      </div>
+      <div class="text-center text-[11px] font-bold text-slate-400 mt-1.5" id="wordCounter">১ নং পাতা</div>
+      <div class="flex justify-center gap-2 mt-1">
+        <button class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-bold" id="galleryBtn"><i class="fa-regular fa-image"></i> গ্যালারি</button>
+      </div>
+    </footer>
+
+    <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[999] hidden items-center justify-center p-3 transition-all duration-300" id="popupOverlay">
+      <div class="bg-gradient-to-b from-purple-50 to-white rounded-3xl max-w-2xl w-full p-4 md:p-6 shadow-2xl border-4 border-purple-400 scale-95 transition-transform duration-300 transform flex flex-col max-h-[90vh]" id="popupBox">
+        <div class="flex items-center justify-between border-b-4 border-dashed border-purple-100 pb-2 mb-3">
+          <div class="text-lg md:text-2xl font-black text-purple-800 flex items-center gap-2">✨ জাদুকরী সিলেবাস বাক্স 🎒</div>
+          <button class="w-9 h-9 rounded-full bg-rose-100 text-rose-600 font-bold flex items-center justify-center border-b-4 border-rose-300 hover:bg-rose-200" id="popupClose"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <div class="flex flex-row gap-1.5 overflow-x-auto pb-2 mb-3 border-b border-slate-200 no-scrollbar" id="tabContainer">
+          <button class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-purple-600 text-white" data-tab="bn_tab">🇧🇩 বাংলা</button>
+          <button class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-slate-200 text-slate-700" data-tab="en_tab">🇺🇸 ইংরেজি</button>
+          <button class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-slate-200 text-slate-700" data-tab="ar_tab">🕌 আরবি</button>
+          <button class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-slate-200 text-slate-700" data-tab="math_tab">🔢 অংক</button>
+          <button class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-slate-200 text-slate-700" data-tab="draw_tab">🎨 অংকন</button>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-1" id="popupBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ======================== PWA সেটআপ ========================
+      let deferredPrompt = null;
+      const installBanner = document.getElementById('installBanner');
+      const installBtn = document.getElementById('installBtn');
+      const dismissBtn = document.getElementById('dismissBtn');
+      const onlineDot = document.getElementById('onlineDot');
+
+      function updateOnlineStatus() {
+        if (navigator.onLine) {
+          onlineDot.className = 'offline-dot online';
+          onlineDot.title = 'অনলাইন';
+        } else {
+          onlineDot.className = 'offline-dot offline';
+          onlineDot.title = 'অফলাইন';
+        }
+      }
+      window.addEventListener('online', updateOnlineStatus);
+      window.addEventListener('offline', updateOnlineStatus);
+      updateOnlineStatus();
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBanner.classList.add('show');
+      });
+
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const result = await deferredPrompt.userChoice;
+          deferredPrompt = null;
+          installBanner.classList.remove('show');
+        }
+      });
+
+      dismissBtn.addEventListener('click', () => {
+        installBanner.classList.remove('show');
+      });
+
+      window.addEventListener('appinstalled', () => {
+        installBanner.classList.remove('show');
+        deferredPrompt = null;
+      });
+
+      const manifestData = {
+        name: 'ছোটমণিদের জাদুকরী লেখার খাতা',
+        short_name: 'জাদুকরী খাতা',
+        description: 'বাচ্চাদের জন্য বাংলা, ইংরেজি, আরবি অক্ষর ও অংক শেখার মজার অ্যাপ',
+        start_url: location.href,
+        display: 'standalone',
+        orientation: 'any',
+        background_color: '#e0f2fe',
+        theme_color: '#ff7675',
+        icons: [{
+          src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192"><rect width="192" height="192" rx="36" fill="#ff7675"/><text x="96" y="110" text-anchor="middle" font-size="90">🎨</text></svg>'),
+          sizes: '192x192',
+          type: 'image/svg+xml',
+          purpose: 'any maskable'
+        }, {
+          src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect width="512" height="512" rx="96" fill="#ff7675"/><text x="256" y="290" text-anchor="middle" font-size="240">🎨</text></svg>'),
+          sizes: '512x512',
+          type: 'image/svg+xml',
+          purpose: 'any maskable'
+        }]
+      };
+      const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+      const manifestURL = URL.createObjectURL(manifestBlob);
+      const manifestLink = document.createElement('link');
+      manifestLink.rel = 'manifest';
+      manifestLink.href = manifestURL;
+      document.head.appendChild(manifestLink);
+
+      if ('serviceWorker' in navigator) {
+        const swCode = `
+          const CACHE_NAME = 'jadukori-khata-v5';
+          self.addEventListener('install', (e) => { self.skipWaiting(); });
+          self.addEventListener('activate', (e) => { self.clients.claim(); });
+          self.addEventListener('fetch', (e) => {
+            e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+          });
+        `;
+        const swBlob = new Blob([swCode], { type: 'application/javascript' });
+        const swURL = URL.createObjectURL(swBlob);
+        navigator.serviceWorker.register(swURL, { scope: '/' }).catch(() => {});
+      }
+
+      // ======================== অডিও ========================
+      function playBeep(frequency = 800, duration = 0.1, type = 'sine') {
+        try {
+          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = type;
+          osc.frequency.value = frequency;
+          gain.gain.value = 0.3;
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + duration);
+        } catch(e) {}
+      }
+
+      function speak(text, lang = 'bn-BD') {
+        try {
+          if (!('speechSynthesis' in window)) return;
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = lang;
+          utterance.rate = 0.9;
+          utterance.pitch = 1.2;
+          const setVoice = () => {
+            const voices = window.speechSynthesis.getVoices();
+            if (voices.length === 0) { setTimeout(setVoice, 100); return; }
+            let selectedVoice = null;
+            const langPrefix = lang.split('-')[0];
+            selectedVoice = voices.find(v => v.lang === lang);
+            if (!selectedVoice) selectedVoice = voices.find(v => v.lang.startsWith(langPrefix));
+            if (selectedVoice) {
+              utterance.voice = selectedVoice;
+              window.speechSynthesis.speak(utterance);
+            } else {
+              playBeep(800, 0.1);
+            }
+          };
+          if (window.speechSynthesis.getVoices().length > 0) setVoice();
+          else window.speechSynthesis.onvoiceschanged = setVoice;
+        } catch(e) {}
+      }
+
+      function playClick() { playBeep(600, 0.08, 'sine'); }
+      function playPen() { playBeep(1000, 0.12, 'triangle'); }
+      function playEraser() { playBeep(300, 0.15, 'sawtooth'); }
+      function playStar() { playBeep(1200, 0.25, 'sine'); }
+
+      function speakCurrentItem() {
+        const sub = getSubjectData();
+        const item = getCurrentItem();
+        if (sub.type === 'coloring') {
+          const iconNames = {
+            apple:'এ্যাপেল', flower:'ফ্লাওয়ার', tree:'ট্রি', mango:'ম্যাংগো', watermelon:'ওয়াটারমেলন',
+            house:'হাউজ', boat:'বোট', car:'কার', fish:'ফিশ', bird:'বার্ড', umbrella:'আমব্রেলা',
+            banana:'ব্যানানা', orange:'অরেঞ্জ', grape:'গ্রেইপ', pineapple:'পাইনঅ্যাপল',
+            coconut:'কোকোনাট', strawberry:'স্ট্রবেরি', cherry:'চেরি', sun:'সান', moon:'মুন',
+            star:'স্টার', cloud:'ক্লাউড', rainbow:'রেইনবো', snowflake:'স্নোফ্লেক',
+            bicycle:'বাইসাইকেল', bus:'বাস', train:'ট্রেন', airplane:'এয়ারপ্লেন',
+            helicopter:'হেলিকপ্টার', rocket:'রকেট', school:'স্কুল', hospital:'হসপিটাল',
+            castle:'ক্যাসল', tent:'টেন্ট', book:'বুক', pencil:'পেন্সিল', notebook:'নোটবুক',
+            ruler:'রুলার', scissors:'সিজরস', ball:'বল', kite:'কাইট', puzzle:'পাজল',
+            trophy:'ট্রফি', clock:'ক্লক', gift:'গিফট', balloon:'বেলুন', cake:'কেক',
+            candle:'ক্যান্ডেল', music:'মিউজিক', heart:'হার্ট'
+          };
+          speak(iconNames[item] || item, 'bn-BD');
+          return;
+        }
+        if (sub.type === 'empty') return;
+        if (sub.type === 'text' || sub.type === 'word') {
+          let text = sub.type === 'word' ? item.w : item;
+          let lang = 'bn-BD';
+          if (sub.fontClass === 'font-kids-en') lang = 'en-US';
+          else if (sub.fontClass === 'font-kids-ar') lang = 'ar-SA';
+          speak(text, lang);
+        }
+      }
+
+      // ======================== সিলেবাস ========================
+      function makeNumbers(start, end, isEn, isAr) {
+        const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+        const arDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+        let arr = [];
+        for (let i = start; i <= end; i++) {
+          if (isEn) arr.push(String(i));
+          else if (isAr) arr.push(String(i).split('').map(d => arDigits[parseInt(d)]).join(''));
+          else arr.push(String(i).split('').map(d => bnDigits[parseInt(d)]).join(''));
+        }
+        return arr;
+      }
+
+      const syllabus = {
+        bn_tab: {
+          bengali: { name: 'বাংলা স্বরবর্ণ 🍎', icon: '🍎', fontClass: 'font-kids-bn', type: 'text', items: ['অ','আ','ই','ঈ','উ','ঊ','ঋ','এ','ঐ','ও','ঔ'] },
+          bengali2: { name: 'বাংলা ব্যঞ্জনবর্ণ 🐯', icon: '🐯', fontClass: 'font-kids-bn', type: 'text', items: ['ক','খ','গ','ঘ','ঙ','চ','ছ','জ','ঝ','ঞ','ট','ঠ','ড','ঢ','ণ','ত','থ','দ','ধ','ন','প','ফ','ব','ভ','ম','য','র','ল','শ','ষ','স','হ','ড়','ঢ়','য়','ং','ঃ','ঁ','ৎ'] },
+          bnWords: { name: 'বাংলা শব্দ ✏️', icon: '✍️', fontClass: 'font-kids-bn', type: 'word', items: [{w:'আম', ex:'আ-তে আমটি আমি খাবো পেড়ে'},{w:'বই', ex:'ব-তে বই পড়া ভালো অভ্যাস'},{w:'কলম', ex:'ক-তে কলম দিয়ে লেখা যায়'},{w:'মাছ', ex:'ম-তে মাছ থাকে নদীর জলে'}] }
+        },
+        en_tab: {
+          englishUpper: { name: 'Capital A-Z 🔠', icon: '🔠', fontClass: 'font-kids-en', type: 'text', items: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('') },
+          englishLower: { name: 'Small a-z 🔡', icon: '🔡', fontClass: 'font-kids-en', type: 'text', items: 'abcdefghijklmnopqrstuvwxyz'.split('') },
+          enWords: { name: 'Word Formation 📝', icon: '🐱', fontClass: 'font-kids-en', type: 'word', items: [{w:'Apple', ex:'A for Apple (আপেল)'},{w:'Ball', ex:'B for Ball (বল)'},{w:'Cat', ex:'C for Cat (বিড়াল)'},{w:'Doll', ex:'D for Doll (পুতুল)'}] }
+        },
+        ar_tab: {
+          arabicAlphabets: { name: 'আরবি হরফ 🌙', icon: '🕌', fontClass: 'font-kids-ar', type: 'text', items: ['ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'] }
+        },
+        math_tab: {
+          numbersBn: { name: 'বাংলা অংক ১-১০০ 🔢', icon: '🔟', fontClass: 'font-kids-bn', type: 'text', items: makeNumbers(1,100,false,false) },
+          numbersEn: { name: 'English 1-100 🔢', icon: '🔢', fontClass: 'font-kids-en', type: 'text', items: makeNumbers(1,100,true,false) },
+          numbersAr: { name: 'আরবি ١-١٠٠ 🕌', icon: '🌙', fontClass: 'font-kids-ar', type: 'text', items: makeNumbers(1,100,false,true) }
+        },
+        draw_tab: {
+          drawColoring: { name: 'রং করার ছবি 🌸', icon: '🎨', fontClass: 'font-kids-bn', type: 'coloring', items: ['apple','flower','tree','mango','watermelon','house','boat','fish','car','bird','umbrella','banana','orange','grape','pineapple','coconut','strawberry','cherry','sun','moon','star','cloud','rainbow','snowflake','bicycle','bus','train','airplane','helicopter','rocket','school','hospital','castle','tent','book','pencil','notebook','ruler','scissors','ball','kite','puzzle','trophy','clock','gift','balloon','cake','candle','music','heart'] },
+          drawEmpty: { name: 'খালি বোর্ড ⬜', icon: '✏️', fontClass: 'font-kids-bn', type: 'empty', items: [''] }
+        }
+      };
+
+      const paletteColors = ['#ff4757','#ff6b81','#ffa502','#eccc68','#2ed573','#1e90ff','#5352ed','#747d8c','#a29bfe','#000000'];
+      let currentActiveTab = 'bn_tab', currentKey = 'bengali', currentIndex = 0;
+      let currentColor = paletteColors[0], currentSize = 12, isEraserActive = false;
+      let backgroundFontScale = 100;
+      let isDrawing = false, allStrokes = [], redoStack = [];
+      let starsCount = 0;
+      let savedGallery = [];
+      try {
+        starsCount = parseInt(localStorage.getItem('kidStars') || '0');
+        savedGallery = JSON.parse(localStorage.getItem('kidGalleryV2') || '[]');
+      } catch(e) {}
+
+      const guideCanvas = document.getElementById('guideCanvas'), guideCtx = guideCanvas.getContext('2d');
+      const drawCanvas = document.getElementById('drawCanvas'), drawCtx = drawCanvas.getContext('2d');
+      const container = document.getElementById('canvasContainer'), guideOverlay = document.getElementById('guideOverlay');
+      const popupOverlay = document.getElementById('popupOverlay'), popupBody = document.getElementById('popupBody');
+      const currentWordDisplay = document.getElementById('currentWordDisplay'), wordCounter = document.getElementById('wordCounter');
+      const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn'), subjectBadge = document.getElementById('subjectBadge');
+      const penModeBtn = document.getElementById('penModeBtn'), eraserModeBtn = document.getElementById('eraserModeBtn');
+      const sizeSlider = document.getElementById('sizeSlider'), fontScaleSlider = document.getElementById('fontScaleSlider');
+      const sizeLabel = document.getElementById('sizeLabel');
+      const undoBtn = document.getElementById('undoBtn'), redoBtn = document.getElementById('redoBtn'), btnClear = document.getElementById('btnClear');
+      const starDisplay = document.getElementById('starDisplay');
+      const mascot = document.getElementById('mascot');
+      const galleryOverlay = document.getElementById('galleryOverlay'), galleryImages = document.getElementById('galleryImages');
+      const speakBtn = document.getElementById('speakBtn');
+
+      function updateStarDisplay() { starDisplay.textContent = '⭐' + starsCount; }
+      updateStarDisplay();
+
+      function addStar() {
+        starsCount++;
+        try { localStorage.setItem('kidStars', starsCount); } catch(e) {}
+        updateStarDisplay();
+        playStar();
+        try { confetti({ particleCount: 40, spread: 60, origin: { y: 0.8 } }); } catch(e) {}
+        mascot.textContent = ['🧚‍♀️','🦸‍♀️','🧞','🌟','🎉'][Math.floor(Math.random()*5)];
+        setTimeout(() => { mascot.textContent = '🧚‍♀️'; }, 2000);
+      }
+
+      function saveArtToGallery() {
+        try {
+          const dataURL = drawCanvas.toDataURL('image/png');
+          const galleryItem = {
+            dataURL: dataURL,
+            tab: currentActiveTab,
+            key: currentKey,
+            index: currentIndex,
+            timestamp: Date.now()
+          };
+          savedGallery.push(galleryItem);
+          if (savedGallery.length > 50) savedGallery.shift();
+          localStorage.setItem('kidGalleryV2', JSON.stringify(savedGallery));
+        } catch(e) {}
+      }
+
+      function renderGallery() {
+        galleryImages.innerHTML = '';
+        if (savedGallery.length === 0) {
+          galleryImages.innerHTML = '<p class="text-slate-400 text-center w-full py-8">এখনো কোনো আর্ট নেই! ✏️</p>';
+          return;
+        }
+        savedGallery.forEach((item, i) => {
+          const div = document.createElement('div');
+          div.className = 'gallery-item w-24 h-24 md:w-28 md:h-28 border-2 border-pink-200 rounded-xl overflow-hidden shadow cursor-pointer relative group';
+          const img = new Image();
+          img.src = item.dataURL;
+          img.className = 'w-full h-full object-cover';
+          div.appendChild(img);
+          const label = document.createElement('div');
+          label.className = 'absolute bottom-0 left-0 right-0 bg-black/60 text-white text-[10px] p-1 text-center opacity-0 group-hover:opacity-100 transition-opacity';
+          const subData = syllabus[item.tab]?.[item.key];
+          label.textContent = (subData?.name || '') + ' #' + (item.index + 1);
+          div.appendChild(label);
+          div.addEventListener('click', () => {
+            currentActiveTab = item.tab;
+            currentKey = item.key;
+            currentIndex = item.index;
+            allStrokes = [];
+            redoStack = [];
+            resize();
+            syncUI();
+            galleryOverlay.classList.add('hidden');
+            galleryOverlay.classList.remove('flex');
+            playClick();
+            document.querySelectorAll('.tab-btn').forEach(b => {
+              b.className = "tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-slate-200 text-slate-700";
+              if (b.dataset.tab === item.tab) {
+                b.className = "tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-purple-600 text-white";
+              }
+            });
+          });
+          galleryImages.appendChild(div);
+        });
+      }
+
+      function downloadAllAsCollage() {
+        if (savedGallery.length === 0) {
+          alert('গ্যালারিতে কোনো আর্ট নেই!');
+          return;
+        }
+        const cols = Math.min(savedGallery.length, 4);
+        const rows = Math.ceil(savedGallery.length / cols);
+        const cellSize = 300;
+        const collageCanvas = document.createElement('canvas');
+        collageCanvas.width = cols * cellSize;
+        collageCanvas.height = rows * cellSize;
+        const ctx = collageCanvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, collageCanvas.width, collageCanvas.height);
+        let loadedCount = 0;
+        savedGallery.forEach((item, i) => {
+          const img = new Image();
+          img.onload = () => {
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            const x = col * cellSize;
+            const y = row * cellSize;
+            const padding = 10;
+            ctx.fillStyle = '#f0f0f0';
+            ctx.fillRect(x + padding, y + padding, cellSize - padding*2, cellSize - padding*2);
+            ctx.drawImage(img, x + padding, y + padding, cellSize - padding*2, cellSize - padding*2);
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x + padding, y + padding, cellSize - padding*2, cellSize - padding*2);
+            ctx.fillStyle = '#666';
+            ctx.font = '12px Arial';
+            ctx.fillText('#' + (i + 1), x + padding + 5, y + padding + 20);
+            loadedCount++;
+            if (loadedCount === savedGallery.length) {
+              const link = document.createElement('a');
+              link.download = 'আমার-আর্ট-গ্যালারি-' + new Date().toISOString().slice(0,10) + '.png';
+              link.href = collageCanvas.toDataURL('image/png');
+              link.click();
+              playStar();
+            }
+          };
+          img.src = item.dataURL;
+        });
+      }
+
+      document.getElementById('galleryBtn').addEventListener('click', () => {
+        renderGallery();
+        galleryOverlay.classList.remove('hidden');
+        galleryOverlay.classList.add('flex');
+        playClick();
+      });
+      document.getElementById('galleryClose').addEventListener('click', () => {
+        galleryOverlay.classList.add('hidden');
+        galleryOverlay.classList.remove('flex');
+      });
+      document.getElementById('clearGalleryBtn').addEventListener('click', () => {
+        savedGallery = [];
+        try { localStorage.setItem('kidGalleryV2', '[]'); } catch(e) {}
+        renderGallery();
+        playBeep(400, 0.2, 'square');
+      });
+      document.getElementById('downloadAllBtn').addEventListener('click', downloadAllAsCollage);
+
+      // ======================== থিম ড্রপডাউন ম্যানেজমেন্ট ========================
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const themeMenu = document.getElementById('themeMenu');
+      const themeIcon = document.getElementById('themeIcon');
+      const themeLabel = document.getElementById('themeLabel');
+      const themeOptions = document.querySelectorAll('.theme-option');
+      const mainBody = document.getElementById('mainBody');
+
+      const allThemes = [
+        'theme-cloud', 'theme-jungle', 'theme-ocean', 'theme-castle',
+        'theme-sunset', 'theme-space', 'theme-candy', 'theme-desert',
+        'theme-rain', 'theme-snow'
+      ];
+
+      themeToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeMenu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!themeToggleBtn.contains(e.target) && !themeMenu.contains(e.target)) {
+          themeMenu.classList.add('hidden');
+        }
+      });
+
+      themeOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const theme = option.dataset.theme;
+          const icon = option.dataset.icon;
+          const label = option.dataset.label;
+          mainBody.classList.remove(...allThemes);
+          mainBody.classList.add(theme);
+          themeIcon.textContent = icon;
+          themeLabel.textContent = label;
+          themeOptions.forEach(opt => {
+            opt.querySelector('.check-mark').classList.add('hidden');
+            opt.classList.remove('border-purple-400', 'bg-purple-50');
+          });
+          option.querySelector('.check-mark').classList.remove('hidden');
+          option.classList.add('border-purple-400', 'bg-purple-50');
+          themeMenu.classList.add('hidden');
+          playClick();
+          try { localStorage.setItem('selectedTheme', theme); } catch(e) {}
+        });
+      });
+
+      function loadSavedTheme() {
+        try {
+          const saved = localStorage.getItem('selectedTheme');
+          if (saved && allThemes.includes(saved)) {
+            const option = document.querySelector(`[data-theme="${saved}"]`);
+            if (option) option.click();
+          }
+        } catch(e) {}
+      }
+      loadSavedTheme();
+
+      speakBtn.addEventListener('click', () => {
+        speakCurrentItem();
+        speakBtn.classList.add('animate-pop');
+        setTimeout(() => speakBtn.classList.remove('animate-pop'), 300);
+        playClick();
+      });
+
+      function getSubjectData() {
+        for (let tab in syllabus) {
+          if (syllabus[tab][currentKey]) return syllabus[tab][currentKey];
+        }
+        return syllabus['bn_tab']['bengali'];
+      }
+
+      function getCurrentItem() {
+        return getSubjectData().items[currentIndex];
+      }
+
+      function getTotalItems() {
+        return getSubjectData().items.length;
+      }
+
+      function getFontFamily() {
+        const sub = getSubjectData();
+        if (sub.fontClass === 'font-kids-bn') return "'Anek Bangla', 'Hind Siliguri', sans-serif";
+        if (sub.fontClass === 'font-kids-ar') return "'Noto Naskh Arabic', serif";
+        return "'Comic Neue', 'Arial Rounded MT Bold', 'Arial', sans-serif";
+      }
+
+      function buildPalette() {
+        const card = document.getElementById('colorPaletteCard');
+        card.innerHTML = '';
+        paletteColors.forEach(color => {
+          const dot = document.createElement('div');
+          dot.className = `w-9 h-9 md:w-11 md:h-11 rounded-full cursor-pointer border-4 transition-all transform hover:scale-110 active:scale-90 flex-shrink-0 ${color === currentColor && !isEraserActive ? 'border-purple-600 scale-105 shadow-lg ring-4 ring-purple-300' : 'border-white shadow'}`;
+          dot.style.backgroundColor = color;
+          dot.addEventListener('click', () => {
+            currentColor = color;
+            setMode(false);
+            buildPalette();
+            playClick();
+          });
+          card.appendChild(dot);
+        });
+      }
+
+      function resize() {
+        const rect = container.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        [guideCanvas, drawCanvas].forEach(canvas => {
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          canvas.getContext('2d').setTransform(1,0,0,1,0,0);
+          canvas.getContext('2d').scale(dpr, dpr);
+        });
+        renderGuide();
+        drawLines();
+        redraw();
+      }
+
+      function drawLines() {
+        if (getSubjectData().type !== 'text') {
+          guideOverlay.innerHTML = '';
+          return;
+        }
+        const h = container.getBoundingClientRect().height;
+        let linesSvg = `<svg width="100%" height="100%">`;
+        const colors = ['#ff7675','#74b9ff','#74b9ff','#a29bfe'];
+        [0.25,0.45,0.65,0.85].forEach((ratio,i) => {
+          const y = h * ratio;
+          linesSvg += `<line x1="2%" x2="98%" y1="${y}" y2="${y}" stroke="${colors[i]}" stroke-width="2.5" stroke-dasharray="10,8" opacity="0.5"/>`;
+        });
+        linesSvg += `</svg>`;
+        guideOverlay.innerHTML = linesSvg;
+      }
+
+      function drawColoringOutline(type, ctx, w, h) {
+        ctx.save();
+        ctx.strokeStyle = '#1e293b';
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        const cx = w/2, cy = h/2, size = Math.min(w,h)*0.35;
+        ctx.beginPath();
+        if (type === 'apple') {
+          ctx.arc(cx-size*0.25, cy, size*0.45, 0.2*Math.PI, 1.7*Math.PI);
+          ctx.arc(cx+size*0.25, cy, size*0.45, 1.3*Math.PI, 0.8*Math.PI);
+          ctx.closePath(); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy-size*0.35); ctx.quadraticCurveTo(cx+10, cy-size*0.65, cx+15, cy-size*0.7); ctx.stroke();
+        } else if (type === 'flower') {
+          for (let i=0; i<5; i++) { const angle = (i*2*Math.PI)/5; ctx.beginPath(); ctx.arc(cx+Math.cos(angle)*size*0.45, cy+Math.sin(angle)*size*0.45, size*0.3, 0, 2*Math.PI); ctx.stroke(); }
+          ctx.beginPath(); ctx.fillStyle="#fff"; ctx.arc(cx, cy, size*0.25, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+        } else if (type === 'tree') {
+          ctx.moveTo(cx-size*0.1, cy+size*0.5); ctx.lineTo(cx-size*0.1, cy+size*0.1); ctx.lineTo(cx+size*0.1, cy+size*0.1); ctx.lineTo(cx+size*0.1, cy+size*0.5); ctx.closePath(); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx-size*0.3, cy-size*0.1, size*0.25, 0.7*Math.PI, 1.6*Math.PI); ctx.arc(cx, cy-size*0.3, size*0.3, 1.1*Math.PI, 1.9*Math.PI); ctx.arc(cx+size*0.3, cy-size*0.1, size*0.25, 1.4*Math.PI, 0.3*Math.PI); ctx.quadraticCurveTo(cx+size*0.2, cy+size*0.15, cx-size*0.3, cy+size*0.1); ctx.stroke();
+        } else if (type === 'mango') {
+          ctx.moveTo(cx, cy-size*0.5); ctx.bezierCurveTo(cx-size*0.7, cy-size*0.4, cx-size*0.7, cy+size*0.2, cx-size*0.4, cy+size*0.5); ctx.quadraticCurveTo(cx-size*0.45, cy+size*0.55, cx-size*0.5, cy+size*0.6); ctx.quadraticCurveTo(cx-size*0.3, cy+size*0.6, cx, cy+size*0.65); ctx.bezierCurveTo(cx+size*0.6, cy+size*0.65, cx+size*0.6, cy-size*0.3, cx, cy-size*0.5); ctx.closePath(); ctx.stroke();
+        } else if (type === 'watermelon') {
+          ctx.arc(cx, cy-size*0.2, size*0.6, 0, Math.PI); ctx.closePath(); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, cy-size*0.2, size*0.5, 0, Math.PI); ctx.stroke();
+        } else if (type === 'house') {
+          ctx.moveTo(cx, cy-size*0.5); ctx.lineTo(cx-size*0.5, cy); ctx.lineTo(cx+size*0.5, cy); ctx.closePath(); ctx.rect(cx-size*0.4, cy, size*0.8, size*0.5); ctx.stroke();
+        } else if (type === 'boat') {
+          ctx.moveTo(cx-size*0.8, cy+size*0.1); ctx.quadraticCurveTo(cx, cy+size*0.15, cx+size*0.8, cy+size*0.05); ctx.lineTo(cx+size*0.55, cy+size*0.6); ctx.lineTo(cx-size*0.55, cy+size*0.6); ctx.closePath(); ctx.stroke();
+        } else if (type === 'fish') {
+          ctx.moveTo(cx-size*0.9, cy-size*0.1); ctx.bezierCurveTo(cx-size*0.8, cy-size*0.6, cx+size*0.4, cy-size*0.6, cx+size*0.6, cy-size*0.2); ctx.quadraticCurveTo(cx+size*0.7, cy-size*0.25, cx+size*0.8, cy-size*0.4); ctx.bezierCurveTo(cx+size*1.1, cy-size*0.4, cx+size*1.1, cy+size*0.4, cx+size*0.8, cy+size*0.4); ctx.quadraticCurveTo(cx+size*0.7, cy+size*0.25, cx+size*0.6, cy+size*0.2); ctx.bezierCurveTo(cx+size*0.3, cy+size*0.6, cx-size*0.7, cy+size*0.6, cx-size*0.9, cy+size*0.1); ctx.closePath(); ctx.stroke();
+        } else if (type === 'car') {
+          ctx.rect(cx-size*0.6, cy, size*1.2, size*0.4); ctx.rect(cx-size*0.3, cy-size*0.3, size*0.6, size*0.3); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx-size*0.3, cy+size*0.4, 18, 0, 2*Math.PI); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx+size*0.3, cy+size*0.4, 18, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'bird') {
+          ctx.moveTo(cx+size*0.45, cy-size*0.25); ctx.arc(cx+size*0.15, cy-size*0.35, size*0.35, -0.1*Math.PI, 1.1*Math.PI, true); ctx.lineTo(cx-size*0.8, cy+size*0.55); ctx.lineTo(cx-size*1.0, cy+size*0.45); ctx.quadraticCurveTo(cx-size*0.4, cy+size*0.4, cx-size*0.1, cy+size*0.1); ctx.quadraticCurveTo(cx+size*0.4, cy+size*0.1, cx+size*0.45, cy-size*0.25); ctx.stroke();
+        } else if (type === 'umbrella') {
+          ctx.arc(cx, cy-size*0.2, size*0.5, Math.PI, 0); ctx.closePath(); ctx.stroke(); ctx.beginPath(); ctx.moveTo(cx, cy-size*0.2); ctx.quadraticCurveTo(cx+size*0.1, cy+size*0.3, cx-size*0.05, cy+size*0.5); ctx.stroke();
+        } else if (type === 'banana') {
+          ctx.moveTo(cx-size*0.5, cy+size*0.3); ctx.quadraticCurveTo(cx, cy-size*0.5, cx+size*0.4, cy-size*0.2); ctx.quadraticCurveTo(cx+size*0.5, cy+size*0.2, cx-size*0.5, cy+size*0.3); ctx.closePath(); ctx.stroke();
+        } else if (type === 'orange') {
+          ctx.arc(cx, cy, size*0.45, 0, 2*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, cy-size*0.1, size*0.08, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'grape') {
+          const pos = [[0,-0.25],[-0.25,0.1],[0.25,0.1],[-0.12,-0.5],[0.12,-0.5],[0,-0.7]];
+          pos.forEach(([dx,dy]) => { ctx.beginPath(); ctx.arc(cx+dx*size, cy+dy*size, size*0.15, 0, 2*Math.PI); ctx.stroke(); });
+          ctx.beginPath(); ctx.moveTo(cx, cy-size*0.7); ctx.lineTo(cx, cy-size*0.9); ctx.stroke();
+        } else if (type === 'pineapple') {
+          ctx.ellipse(cx, cy+size*0.1, size*0.35, size*0.5, 0, 0, 2*Math.PI); ctx.stroke();
+          for (let i=-2; i<=2; i++) { ctx.beginPath(); ctx.moveTo(cx+i*size*0.12, cy-size*0.3); ctx.lineTo(cx+i*size*0.12, cy+size*0.5); ctx.stroke(); }
+        } else if (type === 'coconut') {
+          ctx.arc(cx, cy, size*0.5, 0, Math.PI); ctx.closePath(); ctx.stroke();
+        } else if (type === 'strawberry') {
+          ctx.moveTo(cx, cy+size*0.4); ctx.bezierCurveTo(cx-size*0.5, cy+size*0.2, cx-size*0.5, cy-size*0.3, cx, cy-size*0.3); ctx.bezierCurveTo(cx+size*0.5, cy-size*0.3, cx+size*0.5, cy+size*0.2, cx, cy+size*0.4); ctx.closePath(); ctx.stroke();
+        } else if (type === 'cherry') {
+          ctx.arc(cx-size*0.25, cy+size*0.2, size*0.25, 0, 2*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.arc(cx+size*0.25, cy+size*0.2, size*0.25, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'sun') {
+          ctx.arc(cx, cy, size*0.3, 0, 2*Math.PI); ctx.stroke(); for (let i=0; i<8; i++) { const a = (i*Math.PI)/4; ctx.beginPath(); ctx.moveTo(cx+Math.cos(a)*size*0.35, cy+Math.sin(a)*size*0.35); ctx.lineTo(cx+Math.cos(a)*size*0.45, cy+Math.sin(a)*size*0.45); ctx.stroke(); }
+        } else if (type === 'moon') {
+          ctx.arc(cx, cy, size*0.45, 0, 2*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.arc(cx+size*0.2, cy-size*0.1, size*0.35, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'star') {
+          const outer=size*0.45, inner=size*0.2; ctx.beginPath(); for (let i=0; i<10; i++) { const a = (i*Math.PI)/5-Math.PI/2; const r = i%2===0?outer:inner; i===0?ctx.moveTo(cx+Math.cos(a)*r, cy+Math.sin(a)*r):ctx.lineTo(cx+Math.cos(a)*r, cy+Math.sin(a)*r); } ctx.closePath(); ctx.stroke();
+        } else if (type === 'cloud') {
+          ctx.moveTo(cx-size*0.4, cy+size*0.1); ctx.arc(cx-size*0.25, cy-size*0.1, size*0.25, Math.PI, 0); ctx.arc(cx+size*0.1, cy-size*0.25, size*0.3, Math.PI, 0); ctx.arc(cx+size*0.4, cy-size*0.05, size*0.2, Math.PI, 0); ctx.lineTo(cx+size*0.5, cy+size*0.1); ctx.closePath(); ctx.stroke();
+        } else if (type === 'rainbow') {
+          for (let i=0; i<4; i++) { ctx.beginPath(); ctx.arc(cx, cy+size*0.2, size*(0.3+i*0.1), Math.PI, 0); ctx.stroke(); }
+        } else if (type === 'snowflake') {
+          for (let i=0; i<6; i++) { const a = (i*Math.PI)/3; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx+Math.cos(a)*size*0.45, cy+Math.sin(a)*size*0.45); ctx.stroke(); }
+        } else if (type === 'bicycle') {
+          ctx.beginPath(); ctx.arc(cx-size*0.4, cy+size*0.3, size*0.2, 0, 2*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.arc(cx+size*0.4, cy+size*0.3, size*0.2, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'bus') {
+          ctx.rect(cx-size*0.5, cy-size*0.3, size, size*0.6); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx-size*0.25, cy+size*0.3, size*0.1, 0, 2*Math.PI); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx+size*0.25, cy+size*0.3, size*0.1, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'train') {
+          ctx.rect(cx-size*0.5, cy-size*0.2, size*0.8, size*0.4); ctx.stroke();
+        } else if (type === 'airplane') {
+          ctx.moveTo(cx-size*0.5, cy); ctx.lineTo(cx+size*0.5, cy); ctx.stroke();
+        } else if (type === 'helicopter') {
+          ctx.ellipse(cx, cy, size*0.4, size*0.15, 0, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'rocket') {
+          ctx.moveTo(cx, cy-size*0.6); ctx.lineTo(cx-size*0.2, cy-size*0.1); ctx.lineTo(cx+size*0.2, cy-size*0.1); ctx.closePath(); ctx.stroke();
+        } else if (type === 'school') {
+          ctx.rect(cx-size*0.4, cy-size*0.2, size*0.8, size*0.6); ctx.stroke();
+        } else if (type === 'hospital') {
+          ctx.rect(cx-size*0.4, cy-size*0.2, size*0.8, size*0.6); ctx.stroke(); ctx.beginPath(); ctx.moveTo(cx, cy-size*0.15); ctx.lineTo(cx, cy+size*0.25); ctx.moveTo(cx-size*0.15, cy+size*0.05); ctx.lineTo(cx+size*0.15, cy+size*0.05); ctx.stroke();
+        } else if (type === 'castle') {
+          ctx.rect(cx-size*0.3, cy-size*0.1, size*0.6, size*0.5); ctx.stroke();
+        } else if (type === 'tent') {
+          ctx.moveTo(cx-size*0.45, cy+size*0.4); ctx.lineTo(cx, cy-size*0.45); ctx.lineTo(cx+size*0.45, cy+size*0.4); ctx.closePath(); ctx.stroke();
+        } else if (type === 'book') {
+          ctx.rect(cx-size*0.35, cy-size*0.4, size*0.7, size*0.8); ctx.stroke(); ctx.beginPath(); ctx.moveTo(cx, cy-size*0.4); ctx.lineTo(cx, cy+size*0.4); ctx.stroke();
+        } else if (type === 'pencil') {
+          ctx.moveTo(cx-size*0.4, cy+size*0.05); ctx.lineTo(cx+size*0.35, cy-size*0.45); ctx.lineTo(cx+size*0.5, cy-size*0.3); ctx.lineTo(cx-size*0.25, cy+size*0.2); ctx.closePath(); ctx.stroke();
+        } else if (type === 'notebook') {
+          ctx.rect(cx-size*0.35, cy-size*0.35, size*0.7, size*0.7); ctx.stroke();
+        } else if (type === 'ruler') {
+          ctx.rect(cx-size*0.5, cy-size*0.1, size, size*0.2); ctx.stroke();
+        } else if (type === 'scissors') {
+          ctx.beginPath(); ctx.arc(cx-size*0.2, cy+size*0.15, size*0.15, 0, 2*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.arc(cx+size*0.2, cy+size*0.15, size*0.15, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'ball') {
+          ctx.arc(cx, cy, size*0.4, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'kite') {
+          ctx.moveTo(cx, cy-size*0.5); ctx.lineTo(cx+size*0.25, cy); ctx.lineTo(cx, cy+size*0.2); ctx.lineTo(cx-size*0.25, cy); ctx.closePath(); ctx.stroke();
+        } else if (type === 'trophy') {
+          ctx.moveTo(cx-size*0.25, cy-size*0.3); ctx.lineTo(cx+size*0.25, cy-size*0.3); ctx.lineTo(cx+size*0.15, cy+size*0.2); ctx.lineTo(cx-size*0.15, cy+size*0.2); ctx.closePath(); ctx.stroke();
+        } else if (type === 'clock') {
+          ctx.arc(cx, cy, size*0.35, 0, 2*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy-size*0.2); ctx.moveTo(cx, cy); ctx.lineTo(cx+size*0.15, cy); ctx.stroke();
+        } else if (type === 'gift') {
+          ctx.rect(cx-size*0.3, cy-size*0.15, size*0.6, size*0.5); ctx.stroke();
+        } else if (type === 'balloon') {
+          ctx.ellipse(cx, cy-size*0.1, size*0.25, size*0.35, 0, 0, 2*Math.PI); ctx.stroke();
+        } else if (type === 'cake') {
+          ctx.rect(cx-size*0.4, cy, size*0.8, size*0.25); ctx.stroke(); ctx.beginPath(); ctx.rect(cx-size*0.3, cy-size*0.2, size*0.6, size*0.2); ctx.stroke();
+        } else if (type === 'candle') {
+          ctx.rect(cx-size*0.05, cy-size*0.1, size*0.1, size*0.5); ctx.stroke();
+        } else if (type === 'music') {
+          ctx.beginPath(); ctx.arc(cx-size*0.1, cy+size*0.2, size*0.15, 0, 2*Math.PI); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx-size*0.1+size*0.15, cy+size*0.2); ctx.lineTo(cx-size*0.1+size*0.15, cy-size*0.4); ctx.lineTo(cx+size*0.3, cy-size*0.5); ctx.lineTo(cx+size*0.3, cy-size*0.1); ctx.stroke();
+        } else if (type === 'heart') {
+          ctx.moveTo(cx, cy-size*0.2); ctx.bezierCurveTo(cx-size*0.5, cy-size*0.6, cx-size*0.6, cy+size*0.1, cx, cy+size*0.5); ctx.bezierCurveTo(cx+size*0.6, cy+size*0.1, cx+size*0.5, cy-size*0.6, cx, cy-size*0.2); ctx.closePath(); ctx.stroke();
+        } else {
+          ctx.arc(cx, cy, size*0.4, 0, 2*Math.PI); ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function renderGuide() {
+        const w = container.getBoundingClientRect().width;
+        const h = container.getBoundingClientRect().height;
+        const sub = getSubjectData();
+        const item = getCurrentItem();
+        if (sub.type === 'empty') {
+          guideCtx.clearRect(0, 0, w, h);
+          guideOverlay.innerHTML = '';
+          return;
+        }
+        if (sub.type === 'coloring') {
+          guideCtx.clearRect(0, 0, w, h);
+          drawColoringOutline(item, guideCtx, w, h);
+          fontScaleSlider.disabled = true;
+          return;
+        }
+        fontScaleSlider.disabled = false;
+        const textToDraw = sub.type === 'word' ? item.w : item;
+        const fontFamily = getFontFamily();
+        const baseSize = Math.min(w, h);
+        let fSize = baseSize * 0.55 * (backgroundFontScale / 100);
+        if (sub.type === 'word') fSize = baseSize * 0.35 * (backgroundFontScale / 100);
+        document.fonts.ready.then(() => {
+          guideCtx.clearRect(0, 0, w, h);
+          guideOverlay.innerHTML = '';
+          guideCtx.textAlign = 'center';
+          guideCtx.textBaseline = 'middle';
+          guideCtx.font = `700 ${fSize}px ${fontFamily}`;
+          while (guideCtx.measureText(textToDraw).width > w * 0.9) {
+            fSize -= 5;
+            guideCtx.font = `700 ${fSize}px ${fontFamily}`;
+          }
+          const cx = w / 2;
+          const cy = h / 2;
+          guideCtx.fillStyle = '#e2e8f0';
+          guideCtx.fillText(textToDraw, cx, cy);
+          guideCtx.strokeStyle = '#94a3b8';
+          guideCtx.lineWidth = 2;
+          guideCtx.setLineDash([4, 6]);
+          guideCtx.strokeText(textToDraw, cx, cy);
+          guideCtx.setLineDash([]);
+          guideCtx.fillStyle = '#cbd5e1';
+          guideCtx.fillText(textToDraw, cx, cy);
+          drawLines();
+          if (sub.type === 'word') {
+            guideOverlay.innerHTML = `<div class="absolute bottom-4 left-4 right-4 bg-purple-100 text-purple-900 font-bold p-2.5 rounded-xl border border-purple-300 text-center text-xs md:text-sm shadow-md">${item.ex}</div>`;
+          }
+        });
+      }
+
+      function redraw() {
+        drawCtx.clearRect(0,0,container.getBoundingClientRect().width, container.getBoundingClientRect().height);
+        allStrokes.forEach(stroke => {
+          if (stroke.points.length < 1) return;
+          drawCtx.save();
+          drawCtx.globalCompositeOperation = stroke.color==='eraser' ? 'destination-out' : 'source-over';
+          drawCtx.strokeStyle = stroke.color==='eraser' ? 'rgba(0,0,0,1)' : stroke.color;
+          drawCtx.lineWidth = stroke.width;
+          drawCtx.lineCap = 'round';
+          drawCtx.lineJoin = 'round';
+          drawCtx.beginPath();
+          drawCtx.moveTo(stroke.points[0].x, stroke.points[0].y);
+          stroke.points.forEach(p => drawCtx.lineTo(p.x, p.y));
+          drawCtx.stroke();
+          drawCtx.restore();
+        });
+      }
+
+      function getMouseCoords(e) {
+        const rect = drawCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+      }
+
+      function startDrawing(e) {
+        isDrawing = true;
+        redoStack = [];
+        const coords = getMouseCoords(e);
+        allStrokes.push({ points: [coords], color: isEraserActive ? 'eraser' : currentColor, width: currentSize });
+        redraw();
+        if (isEraserActive) playEraser(); else playPen();
+      }
+
+      function moveDrawing(e) {
+        if (!isDrawing) return;
+        const coords = getMouseCoords(e);
+        allStrokes[allStrokes.length-1].points.push(coords);
+        redraw();
+      }
+
+      drawCanvas.addEventListener('mousedown', startDrawing);
+      drawCanvas.addEventListener('mousemove', moveDrawing);
+      window.addEventListener('mouseup', () => isDrawing = false);
+      drawCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e); }, {passive: false});
+      drawCanvas.addEventListener('touchmove', (e) => { e.preventDefault(); moveDrawing(e); }, {passive: false});
+      window.addEventListener('touchend', () => isDrawing = false);
+
+      function setMode(eraser) {
+        isEraserActive = eraser;
+        if (eraser) {
+          eraserModeBtn.className = "w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center bg-gradient-to-b from-pink-400 to-pink-500 text-white border-b-4 border-pink-700 scale-105 shadow-inner";
+          penModeBtn.className = "w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center bg-white text-slate-600 border-b-4 border-slate-200 hover:bg-slate-50";
+          sizeLabel.textContent = 'রাবার';
+        } else {
+          penModeBtn.className = "w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center bg-gradient-to-b from-indigo-400 to-indigo-500 text-white border-b-4 border-indigo-700 scale-105 shadow-inner";
+          eraserModeBtn.className = "w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center bg-white text-slate-600 border-b-4 border-slate-200 hover:bg-slate-50";
+          sizeLabel.textContent = 'পেন';
+        }
+        buildPalette();
+      }
+
+      function loadPage(key, idx) {
+        if (key) { currentKey = key; currentIndex = 0; }
+        if (idx !== undefined) currentIndex = idx;
+        allStrokes = [];
+        redoStack = [];
+        resize();
+        syncUI();
+        speakCurrentItem();
+      }
+
+      function syncUI() {
+        const sub = getSubjectData();
+        const item = sub.items[currentIndex];
+        const icons = { apple:'🍏', flower:'🌸', tree:'🌳', mango:'🥭', watermelon:'🍉', house:'🏠', boat:'⛵', car:'🚗', fish:'🐟', bird:'🐦', umbrella:'☂️', banana:'🍌', orange:'🍊', grape:'🍇', pineapple:'🍍', coconut:'🥥', strawberry:'🍓', cherry:'🍒', sun:'☀️', moon:'🌙', star:'⭐', cloud:'☁️', rainbow:'🌈', snowflake:'❄️', bicycle:'🚲', bus:'🚌', train:'🚆', airplane:'✈️', helicopter:'🚁', rocket:'🚀', school:'🏫', hospital:'🏥', castle:'🏰', tent:'⛺', book:'📚', pencil:'✏️', notebook:'📓', ruler:'📏', scissors:'✂️', ball:'⚽', kite:'🪁', puzzle:'🧩', trophy:'🏆', clock:'⏰', gift:'🎁', balloon:'🎈', cake:'🎂', candle:'🕯️', music:'🎵', heart:'❤️' };
+        if (sub.type === 'coloring') currentWordDisplay.textContent = icons[item] || '🎨';
+        else if (sub.type === 'empty') currentWordDisplay.textContent = '⬜';
+        else if (sub.type === 'word') currentWordDisplay.textContent = item.w;
+        else currentWordDisplay.textContent = item;
+        subjectBadge.textContent = sub.name;
+        wordCounter.textContent = sub.type==='empty' ? 'খালি স্লেট' : `${currentIndex+1} / ${getTotalItems()} নং পাতা`;
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= getTotalItems()-1;
+      }
+
+      function renderPopupContent() {
+        const data = syllabus[currentActiveTab];
+        popupBody.innerHTML = Object.entries(data).map(([k,v]) => `
+          <button class="group relative overflow-hidden p-3.5 rounded-2xl border-4 text-left transition-all active:scale-95 ${k===currentKey ? 'bg-gradient-to-br from-purple-600 to-indigo-600 border-purple-800 text-white shadow-xl' : 'bg-white border-slate-200 text-slate-700 hover:border-purple-300'}" data-choice="${k}">
+            <div class="flex items-center gap-3 relative z-10">
+              <span class="text-2xl p-2 rounded-xl bg-slate-100 ${k===currentKey ? '!bg-white/20' : ''}">${v.icon}</span>
+              <div class="flex flex-col">
+                <span class="font-black text-xs md:text-sm tracking-wide">${v.name}</span>
+                <span class="text-[10px] font-bold ${k===currentKey ? 'text-purple-200' : 'text-slate-400'}">${v.items.length>1 ? v.items.length+'টি পাতা' : 'ফ্রি স্টাইল'}</span>
+              </div>
+            </div>
+          </button>
+        `).join('');
+        popupBody.querySelectorAll('[data-choice]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            loadPage(btn.dataset.choice, 0);
+            closePopup();
+            addStar();
+            playClick();
+          });
+        });
+      }
+
+      function openPopup() {
+        popupOverlay.classList.remove('hidden');
+        popupOverlay.classList.add('flex');
+        setTimeout(() => document.getElementById('popupBox').classList.remove('scale-95'), 10);
+        renderPopupContent();
+      }
+      function closePopup() {
+        document.getElementById('popupBox').classList.add('scale-95');
+        setTimeout(() => popupOverlay.classList.replace('flex','hidden'), 150);
+      }
+
+      document.getElementById('tabContainer').addEventListener('click', (e) => {
+        const btn = e.target.closest('.tab-btn');
+        if (!btn) return;
+        document.querySelectorAll('.tab-btn').forEach(b => b.className = "tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-slate-200 text-slate-700");
+        btn.className = "tab-btn px-3 py-1.5 rounded-xl font-bold text-xs md:text-sm whitespace-nowrap transition-all bg-purple-600 text-white";
+        currentActiveTab = btn.dataset.tab;
+        renderPopupContent();
+        playClick();
+      });
+
+      document.getElementById('btnSubject').addEventListener('click', openPopup);
+      document.getElementById('popupClose').addEventListener('click', closePopup);
+      penModeBtn.addEventListener('click', () => { setMode(false); playClick(); });
+      eraserModeBtn.addEventListener('click', () => { setMode(true); playClick(); });
+      sizeSlider.addEventListener('input', (e) => currentSize = parseFloat(e.target.value));
+      fontScaleSlider.addEventListener('input', (e) => {
+        backgroundFontScale = parseFloat(e.target.value);
+        renderGuide();
+      });
+      undoBtn.addEventListener('click', () => {
+        if (allStrokes.length > 0) { redoStack.push(allStrokes.pop()); redraw(); playClick(); }
+      });
+      redoBtn.addEventListener('click', () => {
+        if (redoStack.length > 0) { allStrokes.push(redoStack.pop()); redraw(); playClick(); }
+      });
+      btnClear.addEventListener('click', () => {
+        allStrokes = []; redoStack = []; redraw(); playBeep(400, 0.2, 'triangle');
+      });
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) { saveArtToGallery(); loadPage(null, currentIndex-1); playClick(); }
+      });
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < getTotalItems()-1) { saveArtToGallery(); loadPage(null, currentIndex+1); addStar(); playClick(); }
+      });
+
+      window.addEventListener('resize', () => {
+        clearTimeout(window.resTimer);
+        window.resTimer = setTimeout(resize, 100);
+      });
+
+      setMode(false);
+      buildPalette();
+      setTimeout(resize, 150);
+      syncUI();
+      updateStarDisplay();
+    })();
+  </script>
+</body>
+</html>
